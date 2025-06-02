@@ -6,13 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
-<<<<<<< Updated upstream
-=======
 /* Begin PBXBuildFile section */
 		4D4D667E2DEDA68800BB5AE2 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 4D4D667D2DEDA68800BB5AE2 /* SDWebImageSwiftUI */; };
 /* End PBXBuildFile section */
 
->>>>>>> Stashed changes
+
 /* Begin PBXContainerItemProxy section */
 		4D8DE6BE2DECB0D20077E4CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -72,10 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-<<<<<<< Updated upstream
-=======
 				4D4D667E2DEDA68800BB5AE2 /* SDWebImageSwiftUI in Frameworks */,
->>>>>>> Stashed changes
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,10 +131,7 @@
 			);
 			name = "IOS-Challenge";
 			packageProductDependencies = (
-<<<<<<< Updated upstream
-=======
 				4D4D667D2DEDA68800BB5AE2 /* SDWebImageSwiftUI */,
->>>>>>> Stashed changes
 			);
 			productName = "IOS-Challenge";
 			productReference = 4D8DE6A72DECB0CD0077E4CF /* IOS-Challenge.app */;
@@ -223,12 +215,9 @@
 			);
 			mainGroup = 4D8DE69E2DECB0CD0077E4CF;
 			minimizedProjectReferenceProxies = 1;
-<<<<<<< Updated upstream
-=======
 			packageReferences = (
 				4D4D667C2DEDA68800BB5AE2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
->>>>>>> Stashed changes
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 4D8DE6A82DECB0CD0077E4CF /* Products */;
 			projectDirPath = "";
@@ -594,8 +583,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-<<<<<<< Updated upstream
-=======
 
 /* Begin XCRemoteSwiftPackageReference section */
 		4D4D667C2DEDA68800BB5AE2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
@@ -614,8 +601,6 @@
 			package = 4D4D667C2DEDA68800BB5AE2 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
 			productName = SDWebImageSwiftUI;
 		};
-/* End XCSwiftPackageProductDependency section */
->>>>>>> Stashed changes
 	};
 	rootObject = 4D8DE69F2DECB0CD0077E4CF /* Project object */;
 }
