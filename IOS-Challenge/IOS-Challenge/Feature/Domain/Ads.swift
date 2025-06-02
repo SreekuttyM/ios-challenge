@@ -14,9 +14,11 @@ struct Ads : Hashable {
     let priceInfo: String
     let address, province, municipality, district: String
     let medias: [String]
-    
+
     var fullAddress : String {
         address + " " +  municipality  + " " +
-        district
+        district + " " + province
     }
+    
+   
 }

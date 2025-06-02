@@ -219,7 +219,7 @@
                                     <constraint firstItem="qUw-mX-fc0" firstAttribute="top" secondItem="NiD-uP-zjl" secondAttribute="bottom" constant="20" id="y4x-Sm-seW"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izN-fU-Kzk">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="izN-fU-Kzk">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="Nuf-uC-gLO">

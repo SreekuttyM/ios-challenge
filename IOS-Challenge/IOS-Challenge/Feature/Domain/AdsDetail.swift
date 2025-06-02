@@ -10,6 +10,8 @@ import Foundation
 
 struct AdsDetail : Hashable {
     let propertyCode: String
+    let latitude: Double
+    let longitude: Double
     let propertyType: String
     let priceInfo: String
     let medias: [String]

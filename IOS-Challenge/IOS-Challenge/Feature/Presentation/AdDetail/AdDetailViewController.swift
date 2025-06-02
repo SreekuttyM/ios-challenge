@@ -8,6 +8,7 @@
 import UIKit
 import MapKit
 import Combine
+import SwiftUI
 
 class AdDetailViewController : UIViewController {
     var viewModel: AdDetailViewModel!
@@ -30,12 +31,23 @@ class AdDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "DETAIL"
         viewBind()
+    }
+    
+    private func setUpCarouselView(items: [String]) {
+        view_paged.backgroundColor = UIColor.red
+        let vc = UIHostingController(rootView: CarouselView(items: items))
+        addChild(vc)
+        view_paged.addSubview(vc.view)
+        vc.view.frame = view_paged.frame
+        vc.didMove(toParent: self)
     }
     
     private func viewBind() {
 
         viewModel.$state
+            .receive(on: RunLoop.main)
             .sink {  state in
                 switch(state) {
                     case .isLoading:
@@ -46,6 +58,8 @@ class AdDetailViewController : UIViewController {
                     case .loaded(ads: let ads):
                         self.emptyView.isHidden = true
                         self.initializeView(ads: ads)
+                        self.setUpCarouselView(items: ads.medias)
+                        self.annotateLocation(adDetail: ads)
                 }
             }
             .store(in: &cancellables)
@@ -60,5 +74,18 @@ class AdDetailViewController : UIViewController {
         self.lbl_roomSize.text = ads.roomSize
         self.lbl_lift.text = ads.liftExists ? "Yes" : "No"
 
+    }
+    
+    private func annotateLocation(adDetail : AdsDetail) {
+        let coordinate = CLLocationCoordinate2D(latitude: adDetail.latitude, longitude: adDetail.longitude) // Example: San Francisco
+        let region = MKCoordinateRegion(center: coordinate,
+                                        latitudinalMeters: 1000,
+                                        longitudinalMeters: 1000)
+        mapView.setRegion(region, animated: true)
+        
+        // Add a pin
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = coordinate
+        mapView.addAnnotation(annotation)
     }
 }

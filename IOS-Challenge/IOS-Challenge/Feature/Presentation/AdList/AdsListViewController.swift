@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 import Combine
-
 class AdsListViewController : UIViewController {
     var viewModel: AdsListViewModel!
     
     @IBOutlet weak var lbl_errorMsg: UILabel!
     @IBOutlet weak var view_errorOrEmpty: UIView!
     @IBOutlet weak var tableView_ads: UITableView!
+    
     var cancellables = Set<AnyCancellable>()
 
     
@@ -48,8 +48,9 @@ class AdsListViewController : UIViewController {
                 }
             }
             .store(in: &cancellables)
-
     }
+    
+    
 }
 
 
@@ -62,15 +63,29 @@ extension AdsListViewController : UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: AdListTableViewCell.cellIdentifier) as? AdListTableViewCell else {
             fatalError("Cell not exists in storyboard")
         }
-        cell.setUpCellWithAd(adModel: viewModel.ads[indexPath.row])
+        let item = viewModel.ads[indexPath.row]
+        cell.setUpCellWithAd(adModel:item,favoriteItem: viewModel.favorites.filter{$0.itemId == item.propertyCode}.first)
+        cell.onFavoriteTapped = {
+            Task {
+               try await self.viewModel.favoriteIconPressed(item: item)
+               self.tableView_ads.reloadData()
+            }
+        }
         return cell
-    
     }
-    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        let vc =  AppCompositionRoot.composeAdsDetailModule(selectedAdId: viewModel.ads[indexPath.row].propertyCode)
-        self.navigationController?.pushViewController(vc, animated: false)
+        self.navigationController?.pushViewController(vc, animated: true)
     }
+    
+    internal func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension;
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension;
+    }
+    
     
 }

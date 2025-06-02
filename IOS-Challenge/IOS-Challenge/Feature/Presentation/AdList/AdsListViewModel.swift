@@ -19,6 +19,7 @@ final class AdsListViewModel {
     @Published var errorMessage : String = ""
     @Published var showErrorView : Bool = false
     @Published var ads : [Ads] = []
+    @Published var favorites : [FavoriteItem] = []
 
     let repository : AdsRepo!
      
@@ -30,10 +31,34 @@ final class AdsListViewModel {
         Task {
             do {
                let ads = try await self.repository.getAds(url: Constants.baseURL + Constants.adLists)
+                favorites = try await FavoriteManager().loadFavorites()
                 state = .loaded(ads: ads)
             } catch {
                 state = .failed(error: error)
             }
         }
     }
+    
+    
+    func favoriteIconPressed(item : Ads) async throws {
+        let favItem = FavoriteItem (
+            itemId: item.propertyCode,
+            date: Date.now
+        )
+            let isFavorited = try await FavoriteManager().isFavorite(favItem)
+            print("isFirst \n \(isFavorited)")
+            if !isFavorited {
+                try await FavoriteManager().add(favItem)
+                print("favItem \n \(favItem)")
+                self.favorites.append(favItem)
+                print("isFavorited \n \(self.favorites)")
+
+            } else {
+                try await FavoriteManager().remove(favItem)
+                self.favorites.removeAll { item in
+                    item.itemId == favItem.itemId
+                }
+            }
+    }
+    
 }
