@@ -9,15 +9,14 @@ import Foundation
 import UIKit
 import Combine
 class AdsListViewController : UIViewController {
-    var viewModel: AdsListViewModel!
-    
     @IBOutlet weak var lbl_errorMsg: UILabel!
     @IBOutlet weak var view_errorOrEmpty: UIView!
     @IBOutlet weak var tableView_ads: UITableView!
+    let refreshControl = UIRefreshControl()
     
     var cancellables = Set<AnyCancellable>()
+    var viewModel: AdsListViewModel!
 
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
@@ -30,7 +29,10 @@ class AdsListViewController : UIViewController {
     
     private func viewBind() {
         tableView_ads.register(UINib(nibName: AdListTableViewCell.cellIdentifier, bundle: nil), forCellReuseIdentifier: AdListTableViewCell.cellIdentifier)
-
+        
+        refreshControl.addTarget(self, action: #selector(handleRefresh), for: .valueChanged)
+        tableView_ads.refreshControl = refreshControl
+        
         viewModel.$state
             .sink {  state in
                 switch(state) {
@@ -40,17 +42,25 @@ class AdsListViewController : UIViewController {
                     case .failed(error: let error):
                         self.lbl_errorMsg.text = "Some thing went wrong : \(error)"
                         self.view_errorOrEmpty.isHidden = false
+                        self.hideRefreshControlView()
                     case .loaded(ads: let ads):
                         self.viewModel.ads = ads
                         self.view_errorOrEmpty.isHidden = true
+                        self.hideRefreshControlView()
                         self.tableView_ads.reloadData()
-
+                        
                 }
             }
             .store(in: &cancellables)
     }
     
+    @objc private func handleRefresh() {
+        self.viewModel.getAds()
+    }
     
+    func hideRefreshControlView() {
+        refreshControl.endRefreshing()
+    }
 }
 
 

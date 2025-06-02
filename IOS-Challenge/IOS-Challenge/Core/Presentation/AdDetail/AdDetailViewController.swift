@@ -17,6 +17,7 @@ class AdDetailViewController : UIViewController {
     @IBOutlet weak var lbl_description: UILabel!
     @IBOutlet weak var lbl_bedRoomCount: UILabel!
     @IBOutlet weak var lbl_bathRoomCount: UILabel!
+    @IBOutlet weak var lbl_price: UILabel!
     @IBOutlet weak var lbl_roomSize: UILabel!
     @IBOutlet weak var lbl_floor: UILabel!
     @IBOutlet weak var lbl_lift: UILabel!
@@ -73,14 +74,15 @@ class AdDetailViewController : UIViewController {
         self.lbl_floor.text = ads.floor
         self.lbl_roomSize.text = ads.roomSize
         self.lbl_lift.text = ads.liftExists ? "Yes" : "No"
+        self.lbl_price.text = ads.priceInfo
 
     }
     
     private func annotateLocation(adDetail : AdsDetail) {
         let coordinate = CLLocationCoordinate2D(latitude: adDetail.latitude, longitude: adDetail.longitude) // Example: San Francisco
         let region = MKCoordinateRegion(center: coordinate,
-                                        latitudinalMeters: 1000,
-                                        longitudinalMeters: 1000)
+                                        latitudinalMeters: 500,
+                                        longitudinalMeters: 500)
         mapView.setRegion(region, animated: true)
         
         // Add a pin

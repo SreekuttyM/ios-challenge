@@ -16,7 +16,7 @@ extension AdsDTO {
 
 extension AdsDetailDTO {
     func toDomain() -> AdsDetail {
-        return AdsDetail(propertyCode: String(self.adid),latitude: self.ubication.latitude,longitude: self.ubication.longitude, propertyType: self.propertyType, priceInfo: String(self.priceInfo.amount), medias: self.multimedia.images.map {$0.url}, description: self.propertyComment, bedRoomCount: String(self.moreCharacteristics.roomNumber), bathRoomCount: String(self.moreCharacteristics.bathNumber), liftExists: self.moreCharacteristics.lift, roomSize: String(self.moreCharacteristics.constructedArea), floor: self.moreCharacteristics.floor)
+        return AdsDetail(propertyCode: String(self.adid),latitude: self.ubication.latitude,longitude: self.ubication.longitude, propertyType: self.propertyType, priceInfo: String(self.priceInfo.amount) +  self.priceInfo.currencySuffix, medias: self.multimedia.images.map {$0.url}, description: self.propertyComment, bedRoomCount: String(self.moreCharacteristics.roomNumber), bathRoomCount: String(self.moreCharacteristics.bathNumber), liftExists: self.moreCharacteristics.lift, roomSize: String(self.moreCharacteristics.constructedArea), floor: self.moreCharacteristics.floor)
     }
        
 }
