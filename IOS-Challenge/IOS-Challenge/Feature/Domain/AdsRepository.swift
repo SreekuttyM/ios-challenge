@@ -18,9 +18,14 @@ final class AdsRepository : AdsRepo {
     func getAds(url: String) async throws -> [Ads] {
         let ads = try await self.loader.getAds(url: url)
         return ads.map { adsDto in
-            AdsMapper.toDomain(adsDto)
+            adsDto.toDomain()
         }
     }
     
+    func singleAd(url: String) async throws -> AdsDetail {
+        let ads = try await self.loader.getSingleAd(url: url)
+        return ads.toDomain()
+        
+    }
     
 }

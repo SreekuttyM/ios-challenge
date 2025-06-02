@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import Combine
 
 enum AdListViewState {
     case isLoading
@@ -17,14 +16,14 @@ enum AdListViewState {
 @MainActor
 final class AdsListViewModel {
     @Published var state : AdListViewState = .isLoading
+    @Published var errorMessage : String = ""
+    @Published var showErrorView : Bool = false
     @Published var ads : [Ads] = []
-    var cancellables = Set<AnyCancellable>()
 
     let repository : AdsRepo!
      
     init(repository: AdsRepo!) {
         self.repository = repository
-        self.initializeView()
     }
     
     func getAds() {
@@ -36,23 +35,5 @@ final class AdsListViewModel {
                 state = .failed(error: error)
             }
         }
-    }
-    
-    func initializeView() {
-        $state
-            .receive(on: RunLoop.main)
-            .sink { [weak self] state in
-                guard let self = self else { return }
-                switch(state) {
-                    case .isLoading:
-                        self.getAds()
-                    case .failed(error: let error):
-                        print("Some error ocurred.\(error)")
-                    case .loaded(ads: let ads):
-                        print(ads)
-                }
-            }
-            .store(in: &cancellables)
-
     }
 }

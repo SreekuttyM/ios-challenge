@@ -21,6 +21,10 @@ final class AdsRemoteLoader : AdsLoader {
        return try JSONDecoder().decode([AdsDTO].self, from: data)
     }
     
+    func getSingleAd(url: String) async throws -> AdsDetailDTO {
+       let data = try await self.client.get(url: url)
+       return try JSONDecoder().decode(AdsDetailDTO.self, from: data)
+    }
     
 }
 

@@ -19,4 +19,14 @@ final class AppCompositionRoot {
         vc.viewModel = viewModel
         return vc
     }
+    
+    @MainActor static func composeAdsDetailModule(selectedAdId :String?) -> AdDetailViewController {
+        let client = URLSessionClient()
+        let loader = AdsRemoteLoader(client: client)
+        let repository = AdsRepository(loader: loader)
+        let viewModel = AdDetailViewModel(repository: repository, selectedAdId: selectedAdId)
+        let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "AdDetailViewController") as! AdDetailViewController
+        vc.viewModel = viewModel
+        return vc
+    }
 }
