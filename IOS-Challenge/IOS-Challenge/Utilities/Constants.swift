@@ -11,4 +11,5 @@ import Foundation
 struct Constants  {
     static let baseURL = "https://idealista.github.io/ios-challenge/"
     static let adLists = "list.json"
+
 }
