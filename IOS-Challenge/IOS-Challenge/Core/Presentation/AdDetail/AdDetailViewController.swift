@@ -32,7 +32,7 @@ class AdDetailViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "DETAIL"
+        self.title = Constants.adDetailTitle
         viewBind()
     }
     

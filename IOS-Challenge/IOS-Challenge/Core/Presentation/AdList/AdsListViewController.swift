@@ -23,7 +23,7 @@ class AdsListViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "EXPLORE"
+        self.title = Constants.adListTitle
         viewBind()
     }
     

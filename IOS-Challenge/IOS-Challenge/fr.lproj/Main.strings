@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "DETAILS"; ObjectID = "5M7-ci-goJ"; */
+"5M7-ci-goJ.text" = "DÉTAIL";
+
+/* Class = "UILabel"; text = "Bathrooms"; ObjectID = "CHF-Ot-aR0"; */
+"CHF-Ot-aR0.text" = "Salles de bains";
+
+/* Class = "UILabel"; text = "122"; ObjectID = "H7V-OQ-ZRD"; */
+"H7V-OQ-ZRD.text" = "122";
+
+/* Class = "UILabel"; text = "Size"; ObjectID = "P2q-GM-X6L"; */
+"P2q-GM-X6L.text" = "Taille";
+
+/* Class = "UILabel"; text = "Bedrooms"; ObjectID = "UKA-Vg-cFI"; */
+"UKA-Vg-cFI.text" = "Chambres";
+
+/* Class = "UILabel"; text = "Floor"; ObjectID = "aMA-s3-MBe"; */
+"aMA-s3-MBe.text" = "Sol";
+
+/* Class = "UILabel"; text = "Lift"; ObjectID = "nao-Pj-KNy"; */
+"nao-Pj-KNy.text" = "Ascenseur";
+
+/* Class = "UILabel"; text = "Sorry!! No results"; ObjectID = "w5B-G4-cYa"; */
+"w5B-G4-cYa.text" = "Désolé ! Aucun résultat.";
