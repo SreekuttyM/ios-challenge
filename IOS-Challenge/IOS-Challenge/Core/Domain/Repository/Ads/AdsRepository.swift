@@ -9,6 +9,7 @@ import Foundation
 
 
 final class AdsRepository : AdsRepo {
+    
     let loader : AdsRemoteLoader!
     
     init(loader: AdsRemoteLoader!) {

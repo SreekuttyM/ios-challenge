@@ -11,3 +11,4 @@ protocol AdsRepo {
     func getAds(url : String) async throws -> [Ads]
     func singleAd(url: String) async throws -> AdsDetail
 }
+

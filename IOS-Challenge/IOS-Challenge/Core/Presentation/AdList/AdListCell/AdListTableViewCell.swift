@@ -26,7 +26,7 @@ class AdListTableViewCell :  UITableViewCell {
         super.awakeFromNib()
     }
     
-    func setUpCellWithAd(adModel : Ads,favoriteItem :FavoriteItem? = nil) {
+    func setUpCellWithAd(adModel : Ads,favoriteItem :FavoriteModel? = nil) {
         btn_favorite.isUserInteractionEnabled = true
         property_type.text = adModel.propertyType
         property_price.text = adModel.priceInfo
