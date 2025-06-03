@@ -33,14 +33,16 @@ class AdListTableViewCell :  UITableViewCell {
         property_address.text = adModel.fullAddress
         property_province.text = adModel.province
         img_adThumbnail.sd_setImage(with: URL(string: adModel.thumbnail))
-        btn_favorite.setImage(
+        btn_favorite.setImage (
             UIImage(systemName: favoriteItem != nil ? "heart.fill" : "heart"),
             for: .normal
         )
         if let date = favoriteItem?.date {
             lbl_favoriteDate.text = DateFormatter.convertDateToString(date: date)
+            btn_favorite.accessibilityLabel = "Favorited"
         } else {
             lbl_favoriteDate.text = ""
+            btn_favorite.accessibilityLabel = "Not Favorited"
         }
     }
     

@@ -74,6 +74,7 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SPt-Lr-Gwa">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="26"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="favorite" label="favorite"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="YSm-qQ-kVo"/>
                                                                 </constraints>
@@ -86,6 +87,7 @@
                                                             </button>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1OW-bD-o8s">
                                                                 <rect key="frame" x="30" y="0.0" width="0.0" height="26"/>
+                                                                <accessibility key="accessibilityConfiguration" identifier="favorited_date" label="favorited_date"/>
                                                                 <fontDescription key="fontDescription" name="Futura-MediumItalic" family="Futura" pointSize="11"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -144,7 +146,7 @@
         <image name="TestImage1" width="480" height="360"/>
         <image name="heart.fill" catalog="system" width="128" height="107"/>
         <systemColor name="systemTealColor">
-            <color red="0.18823529410000001" green="0.69019607839999997" blue="0.78039215689999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.18823529411764706" green="0.69019607843137254" blue="0.7803921568627451" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
