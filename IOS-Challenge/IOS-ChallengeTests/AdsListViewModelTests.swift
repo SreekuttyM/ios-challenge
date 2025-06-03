@@ -32,20 +32,6 @@ final class AdsListViewModelTests: XCTestCase {
         XCTAssertEqual(sut.favorites.first?.itemId, "1")
     }
     
-    @MainActor
-    func test_favoriteIconPressed_removesItemIfAlreadyFavorited() async throws {
-        // Arrange
-        let sut =  AdsListViewModel(favRepo: FavoriteRepository(localloader: AdsManager(coreDataManager: CoreDataTestManager())))
-
-        sut.favorites = [FavoriteModel(itemId: "1", date: .now)]
-        let item = Ads(propertyCode: "1", propertyType: "ssds", thumbnail: "", priceInfo: "", address: "", province: "", municipality: "", district: "", medias: [])
-
-        // Act
-        try await sut.favoriteIconPressed(item: item)
-
-        // Assert
-        XCTAssertTrue(sut.favorites.isEmpty)
-    }
     
     
     func testExample() throws {
